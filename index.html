@@ -1,405 +1,162 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Meg - Food Truck</title>
+    <title>The Meg Food Truck</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <header>
-        <div class="logo-text">The <span>MEG</span></div>
-        <nav>
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#offers">Offers</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#locations">Locations</a></li>
-            </ul>
-        </nav>
-        <div class="cart-icon-container" onclick="toggleCart()">
-            <svg class="bag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
-            </svg>
-            <span class="cart-count">0</span>
+    <header class="header">
+        <div class="logo-container">
+            <img src="logo.jpeg" alt="The Meg Logo" class="logo">
         </div>
+        <h1>The Meg Food Truck</h1>
+        <p class="tagline">The Biggest Burgers in Town</p>
+        <p class="address">📍 12 El Horreya St., Heliopolis, Cairo</p>
     </header>
 
-    <!-- Slide-out Cart Sidebar -->
-    <div id="cartSidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h3>Your Cart / سلة الطلبات</h3>
-            <button class="close-cart" onclick="toggleCart()">×</button>
-        </div>
-        <div class="cart-items-container">
-            <div class="empty-cart-msg">Your cart is empty</div>
-        </div>
-        <div class="cart-footer">
+    <main class="container">
+        <section class="menu-section">
+            <h2>Our Menu</h2>
+            <div class="menu-grid">
+                
+                <div class="menu-item">
+                    <img src="big-meg.jpg" alt="Big Meg">
+                    <div class="item-details">
+                        <h3>Big Meg</h3>
+                        <p class="description">Double beef patty, melted cheddar, crispy bacon, and signature Meg sauce on a toasted brioche bun.</p>
+                        <span class="price">180 EGP</span>
+                        <button class="add-to-cart" onclick="addToCart('Big Meg', 180)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="double-classic.jpg" alt="Double Classic">
+                    <div class="item-details">
+                        <h3>Double Classic</h3>
+                        <p class="description">Two juicy smashed patties, American cheese, pickles, onions, and house special sauce.</p>
+                        <span class="price">150 EGP</span>
+                        <button class="add-to-cart" onclick="addToCart('Double Classic', 150)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="meg-classic.jpg" alt="Meg Classic">
+                    <div class="item-details">
+                        <h3>Meg Classic</h3>
+                        <p class="description">Single beef patty, fresh lettuce, tomato, onions, and classic mayo on a soft brioche bun.</p>
+                        <span class="price">120 EGP</span>
+                        <button class="add-to-cart" onclick="addToCart('Meg Classic', 120)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="tekno-meg.jpg" alt="Tekno Meg">
+                    <div class="item-details">
+                        <h3>Tekno Meg</h3>
+                        <p class="description">Spicy beef patty, jalapeños, pepper jack cheese, and fiery chipotle mayo.</p>
+                        <span class="price">160 EGP</span>
+                        <button class="add-to-cart" onclick="addToCart('Tekno Meg', 160)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="the-meg.jpg" alt="The Meg Special">
+                    <div class="item-details">
+                        <h3>The Meg Special</h3>
+                        <p class="description">Triple beef patty, onion rings, double cheese, and smoky BBQ sauce.</p>
+                        <span class="price">210 EGP</span>
+                        <button class="add-to-cart" onclick="addToCart('The Meg Special', 210)">Add to Cart</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="cart-section">
+            <h2>Your Order</h2>
+            <div id="cart-items" class="cart-items">
+                <p class="empty-cart">Your cart is empty.</p>
+            </div>
             <div class="cart-total">
                 <span>Total:</span>
-                <strong id="cartTotalPrice">0 EGP</strong>
+                <span id="total-price">0 EGP</span>
             </div>
-            <button class="checkout-whatsapp-btn" onclick="checkoutWhatsApp()">📱 Order via WhatsApp</button>
-        </div>
-    </div>
-    <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()">Order via WhatsApp</button>
+        </section>
+    </main>
 
-    <section id="hero" class="hero-section">
-        <div class="hero-content">
-            <div class="logo-wrapper">
-                <img src="logo.jpeg" alt="The Meg Logo" class="hero-logo">
-            </div>
-            <h1 class="hero-title">BITE INTO THE <span>MEG</span></h1>
-            <p class="hero-subtitle">Giant Burgers • Ocean-Sized Flavors • Monster Bites</p>
-            <div class="hero-buttons">
-                <a href="#offers" class="btn btn-primary">Hot Offers 🔥</a>
-                <a href="#menu" class="btn btn-secondary">View Menu</a>
-            </div>
-        </div>
-    </section>
+    <footer class="footer">
+        <p>© 2026 The Meg Food Truck. All rights reserved.</p>
+    </footer>
 
-    <section id="offers" class="offers-section">
-        <div class="section-header">
-            <h2>Monster <span>Offers</span> | العروض المميزة</h2>
-            <p>Limited-time combo deals packed with flavor</p>
-        </div>
+    <script>
+        let cart = [];
 
-        <div class="offers-grid">
+        function addToCart(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+        }
 
-            <div class="offer-card">
-                <div class="offer-badge">HOT DEAL 🔥</div>
-                <div class="offer-img-box">
-                    <img src="double-classic.jpg" alt="Double Classic Combo" class="offer-img">
-                </div>
-                <div class="offer-header">
-                    <h3>Double Classic</h3>
-                    <h3 class="ar-title" dir="rtl">دبل كلاسيك</h3>
-                </div>
-                <p class="offer-desc">2 Meg Classic burgers + 1 Fries</p>
-                <p class="ar-desc" dir="rtl">اتنين ميج كلاسيك مع باكيت بطاطس</p>
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cart-items');
+            const totalPriceEl = document.getElementById('total-price');
+            
+            if (cart.length === 0) {
+                cartContainer.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+                totalPriceEl.innerText = '0 EGP';
+                return;
+            }
 
-                <div class="offer-footer">
-                    <div class="offer-price">
-                        <span>Price / السعر:</span>
-                        <strong>200 EGP</strong>
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                html += `
+                    <div class="cart-item">
+                        <span>${item.name} (x${item.quantity})</span>
+                        <span>${item.price * item.quantity} EGP</span>
+                        <button onclick="removeFromCart(${index})" class="remove-btn">×</button>
                     </div>
-                    <div class="charcoal-badge" dir="rtl">
-                        <svg class="grill-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 18c-3-4 2-7 0-11" />
-                            <path d="M32 16c-3-4 2-7 0-11" />
-                            <path d="M42 18c-3-4 2-7 0-11" />
-                            <path d="M14 26h36c0 10-8 18-18 18s-18-8-18-18z" />
-                            <path d="M22 43l-6 15" />
-                            <path d="M42 43l6 15" />
-                            <path d="M18 52h28" />
-                        </svg>
-                        <div class="charcoal-text">
-                            <span>مشوي علي</span>
-                            <strong>الفحم</strong>
-                        </div>
-                    </div>
-                </div>
-                <button class="add-to-cart-btn" onclick="addToCart('Double Classic (Offer)', 200)">Add to Cart 🛒</button>
-            </div>
+                `;
+            });
 
-            <div class="offer-card">
-                <div class="offer-badge">BEST COMBO 🦈</div>
-                <div class="offer-img-box">
-                    <img src="big-meg.jpg" alt="Big Meg Combo" class="offer-img">
-                </div>
-                <div class="offer-header">
-                    <h3>Big Meg</h3>
-                    <h3 class="ar-title" dir="rtl">بيج ميج</h3>
-                </div>
-                <p class="offer-desc">Conquer Meg + Tekno Meg + 1 Fries</p>
-                <p class="ar-desc" dir="rtl">كونكر ميج + تكنو ميج مع باكيت بطاطس</p>
+            cartContainer.innerHTML = html;
+            totalPriceEl.innerText = total + ' EGP';
+        }
 
-                <div class="offer-footer">
-                    <div class="offer-price">
-                        <span>Price / السعر:</span>
-                        <strong>270 EGP</strong>
-                    </div>
-                    <div class="charcoal-badge" dir="rtl">
-                        <svg class="grill-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 18c-3-4 2-7 0-11" />
-                            <path d="M32 16c-3-4 2-7 0-11" />
-                            <path d="M42 18c-3-4 2-7 0-11" />
-                            <path d="M14 26h36c0 10-8 18-18 18s-18-8-18-18z" />
-                            <path d="M22 43l-6 15" />
-                            <path d="M42 43l6 15" />
-                            <path d="M18 52h28" />
-                        </svg>
-                        <div class="charcoal-text">
-                            <span>مشوي علي</span>
-                            <strong>الفحم</strong>
-                        </div>
-                    </div>
-                </div>
-                <button class="add-to-cart-btn" onclick="addToCart('Big Meg (Offer)', 270)">Add to Cart 🛒</button>
-            </div>
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
 
-        </div>
-    </section>
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('Your cart is empty! Please add some items before ordering.');
+                return;
+            }
 
-    <section id="menu" class="menu-section">
-        <div class="section-header">
-            <h2>The Monster <span>Menu</span> | المنيو</h2>
-            <p>All burgers feature a stuffed 180g beef patty served with fries</p>
-            <div class="charcoal-badge menu-charcoal" dir="rtl">
-                <svg class="grill-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 18c-3-4 2-7 0-11" />
-                    <path d="M32 16c-3-4 2-7 0-11" />
-                    <path d="M42 18c-3-4 2-7 0-11" />
-                    <path d="M14 26h36c0 10-8 18-18 18s-18-8-18-18z" />
-                    <path d="M22 43l-6 15" />
-                    <path d="M42 43l6 15" />
-                    <path d="M18 52h28" />
-                </svg>
-                <div class="charcoal-text">
-                    <span>مشوي علي</span>
-                    <strong>الفحم</strong>
-                </div>
-            </div>
-        </div>
+            let message = "Hello, I would like to place an order from The Meg Food Truck:%0A%0A";
+            let total = 0;
 
-        <div class="menu-grid">
+            cart.forEach(item => {
+                message += `- ${item.name} (x${item.quantity}): ${item.price * item.quantity} EGP%0A`;
+                total += item.price * item.quantity;
+            });
 
-            <div class="menu-card">
-                <div class="burger-img-box">
-                    <img src="meg-classic.jpg" alt="Meg Classic" class="burger-img">
-                </div>
-                <div class="menu-card-header">
-                    <div class="title-row">
-                        <h3>1. Meg Classic</h3>
-                        <h3 class="ar-title" dir="rtl">1. ميج كلاسيك</h3>
-                    </div>
-                    <div class="prices">
-                        <span class="price-tag">Single / سينجل: <strong id="p-meg-classic-s">150</strong> EGP</span>
-                        <span class="price-tag">Double / دبل: <strong id="p-meg-classic-d">230</strong> EGP</span>
-                    </div>
-                </div>
-                <div class="bilingual-lists">
-                    <ul class="ingredients-list">
-                        <li>180g beef patty stuffed with mozzarella cheese</li>
-                        <li>Lettuce, Tomato, Caramelized onion, Pickles</li>
-                        <li>Brioche bun, Fries</li>
-                        <li>BBQ sauce, Cheddar cheese, Ranch sauce</li>
-                    </ul>
-                    <ul class="ingredients-list ar-list" dir="rtl">
-                        <li>قطعة برجر 180 جرام محشية جبنة موزاريلا</li>
-                        <li>خس، طماطم، بصل مكرمل، خيار مخلل</li>
-                        <li>عيش بريوش، بطاطس</li>
-                        <li>باربيكيو، شيدر، رانش</li>
-                    </ul>
-                </div>
-                <div class="menu-actions">
-                    <button class="add-to-cart-btn" onclick="addToCartWithChoice('Meg Classic', 'Single', 150)">Add Single (150 EGP)</button>
-                    <button class="add-to-cart-btn alt-btn" onclick="addToCartWithChoice('Meg Classic', 'Double', 230)">Add Double (230 EGP)</button>
-                </div>
-            </div>
+            message += `%0A*Total: ${total} EGP*`;
 
-            <div class="menu-card">
-                <div class="burger-img-box">
-                    <img src="the-meg.jpg" alt="The Meg Sandwich" class="burger-img">
-                </div>
-                <div class="menu-card-header">
-                    <div class="title-row">
-                        <h3>2. The Meg</h3>
-                        <h3 class="ar-title" dir="rtl">2. ذا ميج</h3>
-                    </div>
-                    <div class="prices">
-                        <span class="price-tag">Single / سينجل: <strong>165</strong> EGP</span>
-                        <span class="price-tag">Double / دبل: <strong>250</strong> EGP</span>
-                    </div>
-                </div>
-                <div class="bilingual-lists">
-                    <ul class="ingredients-list">
-                        <li>180g beef patty stuffed with kiri cheese & pastrami</li>
-                        <li>Lettuce, Tomato, Caramelized onion, Pickles</li>
-                        <li>Brioche bun, Ranch & Big Tasty sauce, Fries</li>
-                    </ul>
-                    <ul class="ingredients-list ar-list" dir="rtl">
-                        <li>قطعة برجر 180 جرام محشية جبنة كيري وبسطرمة</li>
-                        <li>خس، طماطم، بصل مكرمل، خيار مخلل</li>
-                        <li>عيش بريوش، رانش + بيج تيستي، بطاطس</li>
-                    </ul>
-                </div>
-                <div class="menu-actions">
-                    <button class="add-to-cart-btn" onclick="addToCartWithChoice('The Meg', 'Single', 165)">Add Single (165 EGP)</button>
-                    <button class="add-to-cart-btn alt-btn" onclick="addToCartWithChoice('The Meg', 'Double', 250)">Add Double (250 EGP)</button>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="burger-img-box">
-                    <img src="tekno-meg.jpg" alt="Tekno Meg" class="burger-img">
-                </div>
-                <div class="menu-card-header">
-                    <div class="title-row">
-                        <h3>3. Tekno Meg</h3>
-                        <h3 class="ar-title" dir="rtl">3. تكنو ميج</h3>
-                    </div>
-                    <div class="prices">
-                        <span class="price-tag">Single / سينجل: <strong>170</strong> EGP</span>
-                        <span class="price-tag">Double / دبل: <strong>240</strong> EGP</span>
-                    </div>
-                </div>
-                <div class="bilingual-lists">
-                    <ul class="ingredients-list">
-                        <li>180g beef patty stuffed with mozzarella & chicken cordon bleu</li>
-                        <li>BBQ, Ranch, Big Tasty sauce, Veggies, Brioche, Fries</li>
-                    </ul>
-                    <ul class="ingredients-list ar-list" dir="rtl">
-                        <li>برجر محشي موزاريلا + أصابع كوردون بلو</li>
-                        <li>باربيكيو، رانش، بيج تيستي، خضروات، بريوش، بطاطس</li>
-                    </ul>
-                </div>
-                <div class="menu-actions">
-                    <button class="add-to-cart-btn" onclick="addToCartWithChoice('Tekno Meg', 'Single', 170)">Add Single (170 EGP)</button>
-                    <button class="add-to-cart-btn alt-btn" onclick="addToCartWithChoice('Tekno Meg', 'Double', 240)">Add Double (240 EGP)</button>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="burger-img-box">
-                    <img src="conquer-meg.jpg" alt="Conquer Meg" class="burger-img">
-                </div>
-                <div class="menu-card-header">
-                    <div class="title-row">
-                        <h3>4. Conquer Meg</h3>
-                        <h3 class="ar-title" dir="rtl">4. كونكر ميج</h3>
-                    </div>
-                    <div class="prices">
-                        <span class="price-tag">Single / سينجل: <strong>180</strong> EGP</span>
-                        <span class="price-tag">Double / دبل: <strong>260</strong> EGP</span>
-                    </div>
-                </div>
-                <div class="bilingual-lists">
-                    <ul class="ingredients-list">
-                        <li>180g beef patty stuffed with mozzarella, sticks & bacon</li>
-                        <li>Cheddar, Big Tasty, Veggies, Brioche, Fries</li>
-                    </ul>
-                    <ul class="ingredients-list ar-list" dir="rtl">
-                        <li>برجر محشي موزاريلا + موزاريلا ستيكس + بيكون</li>
-                        <li>شيدر، بيج تيستي، خضروات، بريوش، بطاطس</li>
-                    </ul>
-                </div>
-                <div class="menu-actions">
-                    <button class="add-to-cart-btn" onclick="addToCartWithChoice('Conquer Meg', 'Single', 180)">Add Single (180 EGP)</button>
-                    <button class="add-to-cart-btn alt-btn" onclick="addToCartWithChoice('Conquer Meg', 'Double', 260)">Add Double (260 EGP)</button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="locations" class="contact-section">
-        <div class="contact-card">
-            <h2>📍 Find & Contact Us</h2>
-            <div class="address-grid">
-                <p class="address"><strong>73 Askar St., Gesr El-Suez</strong><br>El-Zeitoun, Cairo</p>
-                <p class="address ar-address" dir="rtl"><strong>73 شارع عسكر، جسر السويس</strong><br>الزيتون، القاهرة</p>
-            </div>
-            <div class="delivery-box">
-                <span>For Delivery & Orders:</span>
-                <div class="contact-actions">
-                    <a href="tel:01017523335" class="action-btn call-btn">📞 01017523335</a>
-                    <a href="https://wa.me/201017523335" target="_blank" class="action-btn whatsapp-btn">💬 Chat on WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cart Logic Script -->
-    <script>let cart = [];
-
-    function toggleCart() {
-      const sidebar = document.getElementById('cartSidebar');
-      const overlay = document.getElementById('cartOverlay');
-      sidebar.classList.toggle('open');
-      overlay.classList.toggle('open');
-    }
-
-    function addToCart(name, price) {
-      const existing = cart.find(item => item.name === name);
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ name, price, qty: 1 });
-      }
-      updateCartUI();
-      toggleCart();
-    }
-
-    function addToCartWithChoice(item, type, price) {
-      const fullName = `${item} (${type})`;
-      addToCart(fullName, price);
-    }
-
-    function changeQty(index, delta) {
-      cart[index].qty += delta;
-      if (cart[index].qty <= 0) {
-        cart.splice(index, 1);
-      }
-      updateCartUI();
-    }
-
-    function updateCartUI() {
-      const countEl = document.querySelector('.cart-count');
-      const container = document.querySelector('.cart-items-container');
-      const totalEl = document.getElementById('cartTotalPrice');
-
-      let totalCount = 0;
-      let totalPrice = 0;
-
-      if (cart.length === 0) {
-        container.innerHTML = '<div class="empty-cart-msg">Your cart is empty</div>';
-      } else {
-        container.innerHTML = '';
-        cart.forEach((item, index) => {
-          totalCount += item.qty;
-          totalPrice += item.price * item.qty;
-
-          const itemEl = document.createElement('div');
-          itemEl.className = 'cart-item';
-          itemEl.innerHTML = `
-            <div class="cart-item-info">
-              <h4>${item.name}</h4>
-              <p>${item.price} EGP x ${item.qty} = <strong>${item.price * item.qty} EGP</strong></p>
-            </div>
-            <div class="cart-item-controls">
-              <button onclick="changeQty(${index}, -1)">-</button>
-              <span>${item.qty}</span>
-              <button onclick="changeQty(${index}, 1)">+</button>
-            </div>
-          `;
-          container.appendChild(itemEl);
-        });
-      }
-
-      countEl.textContent = totalCount;
-      totalEl.textContent = totalPrice + ' EGP';
-    }
-
-    function checkoutWhatsApp() {
-      if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-      }
-      let message = "🍔 *New Order from The Meg Website*:\n\n";
-      let total = 0;
-      cart.forEach(item => {
-        message += `• ${item.name} x ${item.qty} = ${item.price * item.qty} EGP\n`;
-        total += item.price * item.qty;
-      });
-      message += `\n*Total Amount: ${total} EGP*`;
-      message += `\n\nDelivery Address: 73 Askar St., Gesr El-Suez, El-Zeitoun, Cairo`;
-
-      const encoded = encodeURIComponent(message);
-      window.open(`https://wa.me/201017523335?text=${encoded}`, '_blank');
-    }</script>
+            // Replace with your food truck WhatsApp number (include country code, e.g., 20 for Egypt)
+            const phone = "201148434356";
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+    </script>
 </body>
 </html>
