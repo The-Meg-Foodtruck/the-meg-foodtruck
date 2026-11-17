@@ -322,6 +322,9 @@
             const overlay = document.getElementById('cartOverlay');
             sidebar.classList.toggle('open');
             overlay.classList.toggle('open');
+            
+            // Lock/unlock background scrolling when cart opens or closes
+            document.body.classList.toggle('cart-open');
         }
 
         function addToCart(name, price) {
@@ -397,7 +400,9 @@
                 total += item.price * item.qty;
             });
             message += `\n*Total Amount: ${total} EGP*`;
-            message += `\n\nDelivery Address: 73 Askar St., Gesr El-Suez, El-Zeitoun, Cairo`;
+            
+            // Blank delivery address prompt for customer to fill out
+            message += `\n\n📍 *Delivery Address:* \n(Please type your delivery address here)`;
 
             const encoded = encodeURIComponent(message);
             window.open(`https://wa.me/201017523335?text=${encoded}`, '_blank');
