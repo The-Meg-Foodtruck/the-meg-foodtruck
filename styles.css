@@ -26,6 +26,11 @@ body {
     overflow-x: hidden;
 }
 
+/* Prevent body from scrolling when cart sidebar is active */
+body.cart-open {
+    overflow: hidden;
+}
+
 /* Header adjusted to scroll naturally on mobile and avoid overlap */
 header {
     display: flex;
